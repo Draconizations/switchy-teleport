@@ -13,6 +13,34 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	// Modrinth for Switchy itself
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+		content {
+			includeGroup "maven.modrinth"
+		}
+	}
+
+	// For some reason build fails if i don't include these
+	// Jitpack
+	maven { url 'https://jitpack.io' }
+	// Sleeping Town
+	maven {
+		url 'https://repo.sleeping.town'
+		content {
+			includeGroup 'com.unascribed'
+			includeGroup 'gay.lemmaeof'
+		}
+	}
+	// Unascribed (Kdl4j)
+	maven { url "https://repo.unascribed.com" }
+	// Player Pronouns
+	maven {
+		name = "NucleoidMC"
+		url = uri("https://maven.nucleoid.xyz/")
+	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -28,6 +56,8 @@ dependencies {
 	}
 	*/
 	modImplementation libs.quilt.loader
+
+	modImplementation libs.switchy
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.

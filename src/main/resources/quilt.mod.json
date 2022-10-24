@@ -1,40 +1,39 @@
 {
 	"schema_version": 1,
 	"quilt_loader": {
-		"group": "com.example",
-		"id": "example_mod",
+		"group": "xyz.fulmine",
+		"id": "switchy_teleport",
 		"version": "${version}",
 		"metadata": {
-			"name": "Mod Name",
-			"description": "A short description of your mod.",
+			"name": "Switchy Teleport",
+			"description": "Teleport to your last preset location whenever you use Switchy.",
 			"contributors": {
-				"Your name here": "Owner"
+				"Fulmine": "Owner"
 			},
 			"contact": {
 				"homepage": "https://example.com/",
-				"issues": "https://github.com/QuiltMC/quilt-template-mod/issues",
-				"sources": "https://github.com/QuiltMC/quilt-template-mod"
+				"issues": "https://github.com/draconizations/switchy-teleport/issues",
+				"sources": "https://github.com/draconizations/switchy-teleport"
 			},
-			"icon": "assets/example_mod/icon.png"
+			"icon": "assets/switchy_teleport/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.example.example_mod.ExampleMod"
+			"init": "xyz.fulmine.switchy_teleport.SwitchyTeleport"
 		},
 		"depends": [
 			{
-				"id": "quilt_loader",
-				"versions": ">=0.17.0-"
+				"id": "switchy",
+				"versions": ">=1.3.0"
 			},
 			{
-				"id": "quilted_fabric_api",
-				"versions": ">=4.0.0-"
+				"id": "quilt_loader",
+				"versions": ">=0.17.0-"
 			},
 			{
 				"id": "minecraft",
 				"versions": ">=1.19.2"
 			}
 		]
-	},
-	"mixin": "example_mod.mixins.json"
+	}
 }
