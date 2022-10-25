@@ -6,7 +6,7 @@
 		"version": "${version}",
 		"metadata": {
 			"name": "Switchy Teleport",
-			"description": "Teleport to your last preset location whenever you use Switchy.",
+			"description": "Teleport to your last location whenever you use Switchy.",
 			"contributors": {
 				"Fulmine": "Owner"
 			},
