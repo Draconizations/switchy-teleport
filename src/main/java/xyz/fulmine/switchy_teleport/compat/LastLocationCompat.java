@@ -16,15 +16,13 @@ import xyz.fulmine.switchy_teleport.Location;
 import xyz.fulmine.switchy_teleport.SwitchyTeleport;
 import xyz.fulmine.switchy_teleport.utils.TeleportUtils;
 
-public class TeleportCompat implements PresetModule {
-	final static Identifier ID = new Identifier(SwitchyTeleport.ID, "teleport");
+public class LastLocationCompat implements PresetModule {
+	final static Identifier ID = new Identifier(SwitchyTeleport.ID, "last_location");
 	final static boolean isDefault = false;
 
 	final static String KEY_LAST_LOCATION = "last_location";
-	final static String KEY_RESPAWN_POINT = "respawn_point";
 
 	@Nullable private Location lastLocation = null;
-	@Nullable private Location respawnLocation = null;
 
 	@Override
 	public void updateFromPlayer(PlayerEntity player) {
@@ -35,16 +33,6 @@ public class TeleportCompat implements PresetModule {
 				serverPlayer.getPitch(), serverPlayer.getYaw(),
 				serverPlayer.getWorld().getRegistryKey().getValue()
 		);
-
-		BlockPos respawnPoint = serverPlayer.getSpawnPointPosition();
-
-		if (serverPlayer.isSpawnPointSet()) {
-			this.respawnLocation = new Location(
-					respawnPoint.getX(), respawnPoint.getY(), respawnPoint.getZ(),
-					0, serverPlayer.getSpawnAngle(),
-					serverPlayer.getSpawnPointDimension().getRegistry()
-			);
-		}
 	}
 
 	@Override
@@ -53,14 +41,6 @@ public class TeleportCompat implements PresetModule {
 		if (this.lastLocation != null) {
 			TeleportUtils.teleportPlayer(player, this.lastLocation);
 		}
-
-		if (this.respawnLocation != null) {
-			ServerPlayerEntity serverPlayer = ((ServerPlayerEntity)player);
-			serverPlayer.setSpawnPoint(RegistryKey.of(Registry.WORLD_KEY,respawnLocation.getDimensionID()),
-					new BlockPos(respawnLocation.getX(), respawnLocation.getY(), respawnLocation.getZ()),
-					respawnLocation.getYaw(),
-					true, false);
-		}
 	}
 
 	@Override
@@ -68,7 +48,6 @@ public class TeleportCompat implements PresetModule {
 		NbtCompound outNbt = new NbtCompound();
 
 		NbtCompound nbtLast = new NbtCompound();
-		NbtCompound nbtSpawn = new NbtCompound();
 
 		if (this.lastLocation != null) {
 			nbtLast.putDouble("x", this.lastLocation.getX());
@@ -81,19 +60,7 @@ public class TeleportCompat implements PresetModule {
 			nbtLast.putString("dimension", this.lastLocation.getDimensionID().toString());
 		}
 
-		if (this.respawnLocation != null) {
-			nbtSpawn.putDouble("x", this.respawnLocation.getX());
-			nbtSpawn.putDouble("y", this.respawnLocation.getY());
-			nbtSpawn.putDouble("z", this.respawnLocation.getZ());
-
-			nbtSpawn.putFloat("angle", this.respawnLocation.getYaw());
-
-			nbtSpawn.putString("dimension", this.respawnLocation.getDimensionID().toString());
-		}
-
-
 		outNbt.put(KEY_LAST_LOCATION, nbtLast);
-		outNbt.put(KEY_RESPAWN_POINT, nbtSpawn);
 
 		return outNbt;
 	}
@@ -112,20 +79,6 @@ public class TeleportCompat implements PresetModule {
 				);
 			}
 		}
-
-		if (nbt.contains(KEY_RESPAWN_POINT, NbtType.COMPOUND)) {
-			NbtCompound nbtSpawn = nbt.getCompound(KEY_RESPAWN_POINT);
-			if (nbtSpawn.contains("x", NbtType.DOUBLE)) {
-				this.respawnLocation = new Location(
-						nbtSpawn.getDouble("x"),
-						nbtSpawn.getDouble("y"),
-						nbtSpawn.getDouble( "z"),
-						0,
-						nbtSpawn.getFloat("angle"),
-						new Identifier(nbtSpawn.getString("dimension"))
-				);
-			}
-		}
 	}
 
 	@Override
@@ -135,7 +88,7 @@ public class TeleportCompat implements PresetModule {
 
 	@Override
 	public MutableText getDisableConfirmation() {
-		return net.minecraft.text.Text.translatable("commands.switchy_teleport.module.warn.teleport");
+		return net.minecraft.text.Text.translatable("commands.switchy_teleport.module.location.warn");
 	}
 
 	@Override
@@ -148,6 +101,6 @@ public class TeleportCompat implements PresetModule {
 
 	// Runs on touch() - but only once.
 	static {
-		PresetModuleRegistry.registerModule(ID, TeleportCompat::new);
+		PresetModuleRegistry.registerModule(ID, LastLocationCompat::new);
 	}
 }

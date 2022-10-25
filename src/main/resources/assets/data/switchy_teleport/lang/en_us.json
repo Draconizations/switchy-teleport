@@ -1,3 +1,4 @@
 {
-  "commands.switchy_teleport.module.warn.teleport": "WARNING: All saved locations will be lost IMMEDIATELY. This is irreversible."
+  "commands.switchy_teleport.module.location.warn": "WARNING: All saved locations will be lost IMMEDIATELY. This is irreversible.",
+  "commands.switchy_teleport.module.spawn_point.warn": "WARNING: All saved spawn points will be lost IMMEDIATELY. This is irreversible."
 }
