@@ -22,25 +22,6 @@ repositories {
 			includeGroup "maven.modrinth"
 		}
 	}
-
-	// For some reason build fails if i don't include these
-	// Jitpack
-	maven { url 'https://jitpack.io' }
-	// Sleeping Town
-	maven {
-		url 'https://repo.sleeping.town'
-		content {
-			includeGroup 'com.unascribed'
-			includeGroup 'gay.lemmaeof'
-		}
-	}
-	// Unascribed (Kdl4j)
-	maven { url "https://repo.unascribed.com" }
-	// Player Pronouns
-	maven {
-		name = "NucleoidMC"
-		url = uri("https://maven.nucleoid.xyz/")
-	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
