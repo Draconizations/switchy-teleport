@@ -1,6 +1,5 @@
 package xyz.fulmine.switchy_teleport.compat;
 
-import folk.sisby.switchy.Switchy;
 import folk.sisby.switchy.api.PresetModule;
 import folk.sisby.switchy.api.PresetModuleRegistry;
 import net.fabricmc.fabric.api.util.NbtType;
@@ -8,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -93,7 +93,7 @@ public class SpawnPointCompat implements PresetModule {
 
 	@Override
 	public MutableText getDisableConfirmation() {
-		return net.minecraft.text.Text.translatable("commands.switchy_teleport.module.spawn_point.warn");
+		return Text.translatable("commands.switchy_teleport.module.warn.spawn_point");
 	}
 
 	@Override

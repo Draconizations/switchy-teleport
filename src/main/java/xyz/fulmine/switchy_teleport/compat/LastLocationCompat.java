@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -88,7 +89,7 @@ public class LastLocationCompat implements PresetModule {
 
 	@Override
 	public MutableText getDisableConfirmation() {
-		return net.minecraft.text.Text.translatable("commands.switchy_teleport.module.location.warn");
+		return Text.translatable("commands.switchy_teleport.module.warn.location");
 	}
 
 	@Override
