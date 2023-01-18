@@ -23,7 +23,7 @@
 		"depends": [
 			{
 				"id": "switchy",
-				"versions": ">=1.3.0"
+				"versions": ">=1.8.0"
 			},
 			{
 				"id": "quilt_loader",
