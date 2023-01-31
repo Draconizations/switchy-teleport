@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -92,6 +92,6 @@ public class SpawnPointCompat implements PresetModule {
 
 	// Runs on touch() - but only once.
 	static {
-		PresetModuleRegistry.registerModule(ID, SpawnPointCompat::new, false, ModuleImportable.OPERATOR, Set.of(), Text.translatable("commands.switchy_teleport.module.warn.spawn_point"));
+		PresetModuleRegistry.registerModule(ID, SpawnPointCompat::new, false, ModuleImportable.OPERATOR, Set.of(), new TranslatableText("commands.switchy_teleport.module.warn.spawn_point"));
 	}
 }

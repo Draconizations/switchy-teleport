@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import xyz.fulmine.switchy_teleport.Location;
@@ -85,6 +85,6 @@ public class LastLocationCompat implements PresetModule {
 
 	// Runs on touch() - but only once.
 	static {
-		PresetModuleRegistry.registerModule(ID, LastLocationCompat::new, false, ModuleImportable.OPERATOR, Set.of(), Text.translatable("commands.switchy_teleport.module.warn.location"));
+		PresetModuleRegistry.registerModule(ID, LastLocationCompat::new, false, ModuleImportable.OPERATOR, Set.of(), new TranslatableText("commands.switchy_teleport.module.warn.location"));
 	}
 }
