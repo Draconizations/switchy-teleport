@@ -18,12 +18,15 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "xyz.fulmine.switchy_teleport.SwitchyTeleport"
+			"events": [
+				"xyz.fulmine.switchy_teleport.modules.LocationModule",
+				"xyz.fulmine.switchy_teleport.modules.SpawnModule"
+			]
 		},
 		"depends": [
 			{
 				"id": "switchy",
-				"versions": ">=1.8.0"
+				"versions": ">=2.0.0-"
 			},
 			{
 				"id": "quilt_loader",
