@@ -26,6 +26,9 @@ repositories {
 	maven { // Server Translations API
 		url "https://maven.nucleoid.xyz/"
 	}
+	maven { // owo-lib
+		url 'https://maven.wispforest.io'
+	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -43,6 +46,8 @@ dependencies {
 	modImplementation libs.quilt.loader
 
 	modImplementation libs.switchy
+	modImplementation libs.switchy.client
+	modImplementation libs.switchy.ui
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.

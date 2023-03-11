@@ -21,6 +21,10 @@
 			"events": [
 				"xyz.fulmine.switchy_teleport.modules.LocationModule",
 				"xyz.fulmine.switchy_teleport.modules.SpawnModule"
+			],
+			"client_events": [
+				"xyz.fulmine.switchy_teleport.modules.client.LocationClientModule",
+				"xyz.fulmine.switchy_teleport.modules.client.SpawnClientModule"
 			]
 		},
 		"depends": [
