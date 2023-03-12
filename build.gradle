@@ -14,13 +14,20 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 
-	// Modrinth for Switchy itself
-	maven {
-		name = "Modrinth"
-		url = "https://api.modrinth.com/maven"
+	maven { // Switchy
+		url = 'https://maven.proxyfox.dev/'
 		content {
-			includeGroup "maven.modrinth"
+			includeGroup 'folk.sisby'
 		}
+	}
+	maven { // Lib39
+		url 'https://repo.sleeping.town'
+	}
+	maven { // Server Translations API
+		url "https://maven.nucleoid.xyz/"
+	}
+	maven { // owo-lib
+		url 'https://maven.wispforest.io'
 	}
 }
 
@@ -39,6 +46,8 @@ dependencies {
 	modImplementation libs.quilt.loader
 
 	modImplementation libs.switchy
+	modImplementation libs.switchy.client
+	modImplementation libs.switchy.ui
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
