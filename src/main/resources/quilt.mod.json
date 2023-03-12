@@ -29,7 +29,7 @@
 		},
 		"depends": [
 			{
-				"id": "switchy",
+				"id": "switchy-core",
 				"versions": ">=2.0.0-"
 			},
 			{
