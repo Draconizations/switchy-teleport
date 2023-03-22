@@ -4,10 +4,10 @@
     "teleport": {
       "module": {
         "last_location": {
-          "tooltip": "Currently at X:{} Y:{} Z:{}"
+          "tooltip": "In {} at X:{} Y:{} Z:{}"
         },
         "spawn_point": {
-          "tooltip": "Spawns at X:{} Y:{} Z:{}"
+          "tooltip": "Spawns at X:{} Y:{} Z:{} in {}"
         }
       }
     }

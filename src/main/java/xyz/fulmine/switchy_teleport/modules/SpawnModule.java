@@ -16,21 +16,22 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 		BlockPos respawnPoint = player.getSpawnPointPosition();
 
 		if (respawnPoint != null) {
-			this.spawn = new Location(
+			location = new Location(
 					respawnPoint.getX(), respawnPoint.getY(), respawnPoint.getZ(),
 					0, player.getSpawnAngle(),
-					player.getSpawnPointDimension().getValue()
+					player.getSpawnPointDimension().getValue(),
+					player.isSpawnPointSet()
 			);
 		}
 	}
 
 	@Override
 	public void applyToPlayer(ServerPlayerEntity player) {
-		if (this.spawn != null) {
-			player.setSpawnPoint(RegistryKey.of(Registry.WORLD_KEY, spawn.getDimensionID()),
-					new BlockPos(spawn.getX(), spawn.getY(), spawn.getZ()),
-					spawn.getYaw(),
-					false, false);
+		if (location != null) {
+			player.setSpawnPoint(RegistryKey.of(Registry.WORLD_KEY, location.dimension()),
+					new BlockPos(location.getCoordinates()),
+					location.yaw(),
+					Boolean.TRUE.equals(location.setSpawn()), false);
 		}
 	}
 

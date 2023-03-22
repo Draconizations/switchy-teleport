@@ -19,7 +19,7 @@ public class LocationClientModule extends LocationModuleData implements SwitchyC
 	public @Nullable Pair<Component, SwitchyUIPosition> getPreviewComponent(String presetName) {
 		if (location == null) return null;
 		ItemComponent item = Components.item(Items.COMPASS.getDefaultStack());
-		item.tooltip(Text.translatable("switchy.teleport.module.last_location.tooltip", Math.round(location.getX()), Math.round(location.getY()), Math.round(location.getZ())));
+		item.tooltip(Text.translatable("switchy.teleport.module.last_location.tooltip", location.dimension().getPath(),  Math.round(location.x()), Math.round(location.y()), Math.round(location.z())));
 		return Pair.of(item, SwitchyUIPosition.SIDE_RIGHT);
 	}
 
