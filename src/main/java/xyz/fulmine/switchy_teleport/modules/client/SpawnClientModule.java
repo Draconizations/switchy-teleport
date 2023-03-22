@@ -19,7 +19,7 @@ public class SpawnClientModule extends SpawnModuleData implements SwitchyClientM
 	public @Nullable Pair<Component, SwitchyUIPosition> getPreviewComponent(String presetName) {
 		if (location == null) return null;
 		ItemComponent item = Components.item(Items.RED_BED.getDefaultStack());
-		item.tooltip(Text.translatable("switchy.teleport.module.spawn_point.tooltip", Math.round(location.x()), Math.round(location.y()), Math.round(location.z()), location.dimension().getPath()));
+		item.tooltip(Text.translatable("switchy.teleport.module.spawn_point.tooltip", location.dimension().getPath(), Math.round(location.x()), Math.round(location.y()), Math.round(location.z())));
 		return Pair.of(item, SwitchyUIPosition.SIDE_RIGHT);
 	}
 
