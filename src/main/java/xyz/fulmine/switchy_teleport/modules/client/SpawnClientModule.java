@@ -17,9 +17,9 @@ import xyz.fulmine.switchy_teleport.modules.SpawnModuleData;
 public class SpawnClientModule extends SpawnModuleData implements SwitchyClientModule, SwitchyUIModule, SwitchyClientEvents.Init {
 	@Override
 	public @Nullable Pair<Component, SwitchyUIPosition> getPreviewComponent(String presetName) {
-		if (spawn == null) return null;
+		if (location == null) return null;
 		ItemComponent item = Components.item(Items.RED_BED.getDefaultStack());
-		item.tooltip(Text.translatable("switchy.teleport.module.spawn_point.tooltip", Math.round(spawn.getX()), Math.round(spawn.getY()), Math.round(spawn.getZ())));
+		item.tooltip(Text.translatable("switchy.teleport.module.spawn_point.tooltip", location.dimension().getPath(), Math.round(location.x()), Math.round(location.y()), Math.round(location.z())));
 		return Pair.of(item, SwitchyUIPosition.SIDE_RIGHT);
 	}
 

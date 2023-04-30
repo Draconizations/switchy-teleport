@@ -14,13 +14,13 @@ public class LocationModule extends LocationModuleData implements SwitchyModule,
 		location = new Location(
 				player.getX(), player.getY(), player.getZ(),
 				player.getPitch(), player.getYaw(),
-				player.getWorld().getRegistryKey().getValue()
+				player.getWorld().getRegistryKey().getValue(),
+				null
 		);
 	}
 
 	@Override
 	public void applyToPlayer(ServerPlayerEntity player) {
-
 		if (location != null) {
 			TeleportUtils.teleportPlayer(player, location);
 		}
