@@ -1,15 +1,4 @@
 {
-  "lib39:enable_enhanced_lang": true,
-  "switchy": {
-    "teleport": {
-      "module": {
-        "last_location": {
-          "tooltip": "Currently at {} X:{} Y:{} Z:{}"
-        },
-        "spawn_point": {
-          "tooltip": "Spawns at {} X:{} Y:{} Z:{}"
-        }
-      }
-    }
-  }
+  "switchy.teleport.module.last_location.tooltip": "Currently at {} X:{} Y:{} Z:{}",
+  "switchy.teleport.module.spawn_point.tooltip": "Spawns at {} X:{} Y:{} Z:{}"
 }
