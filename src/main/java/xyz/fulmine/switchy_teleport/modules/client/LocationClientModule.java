@@ -10,7 +10,10 @@ import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.component.ItemComponent;
 import io.wispforest.owo.ui.core.Component;
 import net.minecraft.item.Items;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import org.apache.commons.lang3.text.WordUtils;
 import org.jetbrains.annotations.Nullable;
 import xyz.fulmine.switchy_teleport.modules.LocationModuleData;
 
@@ -19,7 +22,13 @@ public class LocationClientModule extends LocationModuleData implements SwitchyC
 	public @Nullable Pair<Component, SwitchyUIPosition> getPreviewComponent(String presetName) {
 		if (location == null) return null;
 		ItemComponent item = Components.item(Items.COMPASS.getDefaultStack());
-		item.tooltip(Text.translatable("switchy.teleport.module.last_location.tooltip", location.dimension().getPath(), Math.round(location.x()), Math.round(location.y()), Math.round(location.z())));
+		item.tooltip(Text.translatable(
+			"switchy.teleport.module.last_location.tooltip",
+			Text.literal(WordUtils.capitalize(location.dimension().getPath().replace('_', ' '))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
+			Text.literal(String.valueOf(Math.round(location.x()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
+			Text.literal(String.valueOf(Math.round(location.y()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
+			Text.literal(String.valueOf(Math.round(location.z()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE))
+		).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
 		return Pair.of(item, SwitchyUIPosition.SIDE_RIGHT);
 	}
 
