@@ -29,7 +29,7 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 	public void applyToPlayer(ServerPlayerEntity player) {
 		if (location != null) {
 			player.setSpawnPoint(RegistryKey.of(RegistryKeys.WORLD, location.dimension()),
-					new BlockPos(location.getCoordinates()),
+					new BlockPos(location.getRoundedCoordinates()),
 					location.yaw(),
 					Boolean.TRUE.equals(location.setSpawn()), false);
 		}

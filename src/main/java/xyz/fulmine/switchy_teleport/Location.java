@@ -3,6 +3,7 @@ package xyz.fulmine.switchy_teleport;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
 import org.jetbrains.annotations.Nullable;
 
 public record Location(double x, double y, double z, float pitch, float yaw, Identifier dimension, @Nullable Boolean setSpawn) {
@@ -20,6 +21,10 @@ public record Location(double x, double y, double z, float pitch, float yaw, Ide
 
 	public Vec3d getCoordinates() {
 		return new Vec3d(x, y, z);
+	}
+
+	public Vec3i getRoundedCoordinates() {
+		return new Vec3i((int) Math.round(x), (int) Math.round(y), (int) Math.round(z));
 	}
 
 	public NbtCompound toNbt() {
