@@ -2,11 +2,11 @@ package xyz.fulmine.switchy_teleport.modules;
 
 import folk.sisby.switchy.api.SwitchyEvents;
 import folk.sisby.switchy.api.module.*;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import org.jetbrains.annotations.Nullable;
 import xyz.fulmine.switchy_teleport.Location;
 
@@ -28,7 +28,7 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 	@Override
 	public void applyToPlayer(ServerPlayerEntity player) {
 		if (location != null) {
-			player.setSpawnPoint(RegistryKey.of(Registry.WORLD_KEY, location.dimension()),
+			player.setSpawnPoint(RegistryKey.of(RegistryKeys.WORLD, location.dimension()),
 					new BlockPos(location.getCoordinates()),
 					location.yaw(),
 					Boolean.TRUE.equals(location.setSpawn()), false);
