@@ -26,6 +26,7 @@ repositories {
 	maven { // owo-lib
 		url 'https://maven.wispforest.io'
 	}
+	mavenLocal()
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
