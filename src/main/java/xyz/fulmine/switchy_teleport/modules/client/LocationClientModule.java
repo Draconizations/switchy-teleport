@@ -29,7 +29,7 @@ public class LocationClientModule extends LocationModuleData implements SwitchyC
 			Text.literal(String.valueOf(Math.round(location.y()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
 			Text.literal(String.valueOf(Math.round(location.z()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE))
 		).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
-		return Pair.of(item, SwitchyUIPosition.SIDE_RIGHT);
+		return Pair.of(item, SwitchyUIPosition.GRID_RIGHT);
 	}
 
 	@Override
