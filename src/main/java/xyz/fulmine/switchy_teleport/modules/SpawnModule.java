@@ -40,10 +40,10 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 		SwitchyModuleRegistry.registerModule(ID, SpawnModule::new, new SwitchyModuleInfo(
 				false,
 				SwitchyModuleEditable.OPERATOR,
-				Text.translatable("switchy.teleport.module.spawn_point.description"))
-				.withDescriptionWhenEnabled(Text.translatable("switchy.teleport.module.spawn_point.enabled"))
-				.withDescriptionWhenDisabled(Text.translatable("switchy.teleport.module.spawn_point.disabled"))
-				.withDeletionWarning(Text.translatable("switchy.teleport.module.spawn_point.warning"))
+				Text.translatable("switchy.modules.switchy_teleport.spawn_point.description"))
+				.withDescriptionWhenEnabled(Text.translatable("switchy.modules.switchy_teleport.spawn_point.enabled"))
+				.withDescriptionWhenDisabled(Text.translatable("switchy.modules.switchy_teleport.spawn_point.disabled"))
+				.withDeletionWarning(Text.translatable("switchy.modules.switchy_teleport.spawn_point.warning"))
 		);
 	}
 }

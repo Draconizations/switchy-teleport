@@ -23,7 +23,7 @@ public class LocationClientModule extends LocationModuleData implements SwitchyC
 		if (location == null) return null;
 		ItemComponent item = Components.item(Items.COMPASS.getDefaultStack());
 		item.tooltip(Text.translatable(
-			"switchy.teleport.module.last_location.tooltip",
+			"switchy.modules.switchy_teleport.last_location.tooltip",
 			Text.literal(WordUtils.capitalize(location.dimension().getPath().replace('_', ' '))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
 			Text.literal(String.valueOf(Math.round(location.x()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
 			Text.literal(String.valueOf(Math.round(location.y()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
