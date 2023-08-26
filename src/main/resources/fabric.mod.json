@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "switchy_teleport",
-  "version": "${switchy}",
+  "version": "${version}",
   "name": "Switchy Teleport",
   "description": "Teleport to your last location whenever you use Switchy.",
   "authors": [
