@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "switchy_teleport",
+  "version": "${switchy}",
+  "name": "Switchy Teleport",
+  "description": "Teleport to your last location whenever you use Switchy.",
+  "authors": [
+    "Fulmine"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/switchy-teleport",
+    "issues": "https://github.com/draconizations/switchy-teleport/issues",
+    "sources": "https://github.com/draconizations/switchy-teleport"
+  },
+  "icon": "assets/switchy_teleport/icon.png",
+  "license": "LGPL-3.0-only",
+  "environment": "*",
+  "entrypoints": {
+    "switchy": [
+      "xyz.fulmine.switchy_teleport.modules.LocationModule",
+      "xyz.fulmine.switchy_teleport.modules.SpawnModule"
+    ],
+    "switchy_client": [
+      "xyz.fulmine.switchy_teleport.modules.client.LocationClientModule",
+      "xyz.fulmine.switchy_teleport.modules.client.SpawnClientModule"
+    ]
+  },
+  "depends": {
+    "minecraft": ">=${minecraft}",
+    "fabricloader": ">=0.14.9",
+    "switchy-core": ">=${switchy}",
+    "switchy-client": ">=${switchy}",
+    "switchy-ui": ">=${switchy}"
+  }
+}
