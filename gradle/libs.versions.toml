@@ -4,9 +4,7 @@ minecraft = "1.20"
 quilt_mappings = "1.20+build.4"
 quilt_loader = "0.19.0"
 
-switchy = "2.1.7+1.20"
-
-quilted_fabric_api = "7.0.1+0.83.0-1.20"
+switchy = "2.7.0+1.20"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -16,13 +14,6 @@ quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loade
 switchy = { module = "folk.sisby:switchy-core", version.ref = "switchy" }
 switchy_client = { module = "folk.sisby:switchy-client", version.ref = "switchy" }
 switchy_ui = { module = "folk.sisby:switchy-ui", version.ref = "switchy" }
-
-quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
-quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
-
-# If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
-[bundles]
-quilted_fabric_api = ["quilted_fabric_api", "quilted_fabric_api_deprecated"]
 
 [plugins]
 quilt_loom = { id = "org.quiltmc.loom", version = "1.2.+" }

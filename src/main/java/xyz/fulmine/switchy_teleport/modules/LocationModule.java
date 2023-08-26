@@ -31,10 +31,10 @@ public class LocationModule extends LocationModuleData implements SwitchyModule,
 		SwitchyModuleRegistry.registerModule(ID, LocationModule::new, new SwitchyModuleInfo(
 				false,
 				SwitchyModuleEditable.OPERATOR,
-				Text.translatable("switchy.teleport.module.last_location.description"))
-				.withDescriptionWhenEnabled(Text.translatable("switchy.teleport.module.last_location.enabled"))
-				.withDescriptionWhenDisabled(Text.translatable("switchy.teleport.module.last_location.disabled"))
-				.withDeletionWarning(Text.translatable("switchy.teleport.module.last_location.warning"))
+				Text.translatable("switchy.modules.switchy_teleport.last_location.description"))
+				.withDescriptionWhenEnabled(Text.translatable("switchy.modules.switchy_teleport.last_location.enabled"))
+				.withDescriptionWhenDisabled(Text.translatable("switchy.modules.switchy_teleport.last_location.disabled"))
+				.withDeletionWarning(Text.translatable("switchy.modules.switchy_teleport.last_location.warning"))
 		);
 	}
 }
