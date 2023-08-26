@@ -23,12 +23,13 @@ public class SpawnClientModule extends SpawnModuleData implements SwitchyClientM
 		if (location == null) return null;
 		ItemComponent item = Components.item(Items.RED_BED.getDefaultStack());
 		item.tooltip(Text.translatable(
-			"switchy.teleport.module.spawn_point.tooltip",
+			"switchy.modules.switchy_teleport.spawn_point.preview.tooltip",
 			Text.literal(WordUtils.capitalize(location.dimension().getPath().replace('_', ' '))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
 			Text.literal(String.valueOf(Math.round(location.x()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
 			Text.literal(String.valueOf(Math.round(location.y()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE)),
 			Text.literal(String.valueOf(Math.round(location.z()))).setStyle(Style.EMPTY.withColor(Formatting.WHITE))
-		).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));		return Pair.of(item, SwitchyUIPosition.SIDE_RIGHT);
+		).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+		return Pair.of(item, SwitchyUIPosition.GRID_RIGHT);
 	}
 
 	@Override

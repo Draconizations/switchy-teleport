@@ -1,19 +1,20 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAccessibility
 plugins {
 	id 'maven-publish'
 	alias libs.plugins.quilt.loom
 }
 
+def mc_major = '1.19'
+def mc = mc_major + '.2'
+def default_branch = '1.19'
+def origVersion = project.version
 archivesBaseName = project.archives_base_name
 version = "${project.version}+${libs.versions.minecraft.get()}"
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
-
+	mavenLocal()
 	maven { // Switchy
 		url = 'https://maven.proxyfox.dev/'
 		content {
@@ -33,31 +34,23 @@ repositories {
 dependencies {
 	minecraft libs.minecraft
 	mappings variantOf(libs.quilt.mappings) { classifier "intermediary-v2" }
-	// Replace the above line with the block below if you want to use Mojang mappings as your primary mappings, falling back on QM for parameters and Javadocs
-	/*
-	mappings loom.layered {
-		mappings "org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:intermediary-v2"
-		officialMojangMappings()
-	}
-	*/
 	modImplementation libs.quilt.loader
 
 	modImplementation libs.switchy
 	modImplementation libs.switchy.client
 	modImplementation libs.switchy.ui
-
-	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
-	// Quilted Fabric API will automatically pull in the correct QSL version.
-	modImplementation libs.quilted.fabric.api
-	// modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
 }
 
 processResources {
-	inputs.property "version", version
+	final Map<String, String> map = [
+		"version"  : version.toString(),
+		"minecraft": libs.versions.minecraft.get(),
+		"ql"       : libs.versions.quilt.loader.get(),
+		"switchy"  : libs.versions.switchy.get()
+	]
 
-	filesMatching('quilt.mod.json') {
-		expand "version": version
-	}
+	inputs.properties(map)
+	filesMatching('*.mod.json') { expand(map) }
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -101,5 +94,50 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+	}
+}
+if (System.getenv("MODRINTH_TOKEN")) {
+	apply plugin: "com.modrinth.minotaur"
+	modrinth {
+		token = System.getenv("MODRINTH_TOKEN")
+		projectId = 'switchy-teleport'
+		versionNumber = project.version
+		versionName = origVersion
+		versionType = 'release'
+		uploadFile = remapJar
+		gameVersions = [mc]
+		loaders = ['quilt', 'fabric']
+		detectLoaders = false
+		dependencies {
+			required.project "switchy"
+		}
+		changelog = "Changelog: https://github.com/Draconizations/switchy-teleport/releases/tag/v" + origVersion
+		syncBodyFrom = rootProject.file("README.md").text
+	}
+}
+
+if (System.getenv("GITHUB_TOKEN")) {
+	apply plugin: "com.github.breadmoirai.github-release"
+	githubRelease {
+		token System.getenv("GITHUB_TOKEN")
+		owner "Draconizations"
+		repo "switchy-teleport"
+		tagName 'v' + origVersion
+		releaseName origVersion
+		targetCommitish default_branch
+		draft false
+		prerelease false
+		releaseAssets remapJar.archiveFile
+		allowUploadToExisting true
+		generateReleaseNotes true
+	}
+	tasks.githubRelease.dependsOn remapJar
+}
+
+if (System.getenv("MODRINTH_TOKEN") && System.getenv("GITHUB_TOKEN")) {
+	tasks.register("fullRelease") {
+		group "publishing"
+		dependsOn "githubRelease"
+		dependsOn "modrinth"
 	}
 }
