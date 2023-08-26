@@ -14,8 +14,8 @@ plugins {
 	alias libs.plugins.quilt.loom
 }
 
-def mc_major = '1.19'
-def mc = mc_major + '.4'
+def mc_major = '1.20'
+def mc = mc_major + ''
 def default_branch = '1.19'
 def origVersion = project.version
 archivesBaseName = project.archives_base_name
