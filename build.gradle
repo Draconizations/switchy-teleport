@@ -5,16 +5,15 @@ plugins {
 	alias libs.plugins.quilt.loom
 }
 
+def mc_major = '1.19'
+def mc = mc_major + '.2'
+def default_branch = '1.19'
+def origVersion = project.version
 archivesBaseName = project.archives_base_name
 version = "${project.version}+${libs.versions.minecraft.get()}"
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
 	mavenLocal()
 	maven { // Switchy
 		url = 'https://maven.proxyfox.dev/'
@@ -95,5 +94,50 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+	}
+}
+if (System.getenv("MODRINTH_TOKEN")) {
+	apply plugin: "com.modrinth.minotaur"
+	modrinth {
+		token = System.getenv("MODRINTH_TOKEN")
+		projectId = 'switchy-teleport'
+		versionNumber = project.version
+		versionName = origVersion
+		versionType = 'release'
+		uploadFile = remapJar
+		gameVersions = [mc]
+		loaders = ['quilt', 'fabric']
+		detectLoaders = false
+		dependencies {
+			required.project "switchy"
+		}
+		changelog = "Changelog: https://github.com/Draconizations/switchy-teleport/releases/tag/v" + origVersion
+		syncBodyFrom = rootProject.file("README.md").text
+	}
+}
+
+if (System.getenv("GITHUB_TOKEN")) {
+	apply plugin: "com.github.breadmoirai.github-release"
+	githubRelease {
+		token System.getenv("GITHUB_TOKEN")
+		owner "Draconizations"
+		repo "switchy-teleport"
+		tagName 'v' + origVersion
+		releaseName origVersion
+		targetCommitish default_branch
+		draft false
+		prerelease false
+		releaseAssets remapJar.archiveFile
+		allowUploadToExisting true
+		generateReleaseNotes true
+	}
+	tasks.githubRelease.dependsOn remapJar
+}
+
+if (System.getenv("MODRINTH_TOKEN") && System.getenv("GITHUB_TOKEN")) {
+	tasks.register("fullRelease") {
+		group "publishing"
+		dependsOn "githubRelease"
+		dependsOn "modrinth"
 	}
 }
