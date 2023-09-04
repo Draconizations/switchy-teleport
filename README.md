@@ -1,5 +1,6 @@
 <!--suppress HtmlDeprecatedTag, XmlDeprecatedElement -->
 <center>
+<img alt="switchy teleport ui preview" src="https://cdn.modrinth.com/data/W1foSJDS/images/f2c55e1987475463dc01278ca030c82b2ca0104e.png" />
 An add-on module for <a href="https://modrinth.com/mod/switchy">Switchy</a> that provides some location-based utilities.<br/>
 Requires <a href="https://modrinth.com/mod/connector">Connector</a> and <a href="https://modrinth.com/mod/forgified-fabric-api">FFAPI</a> on forge.<br/>
 </center>
