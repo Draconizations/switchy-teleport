@@ -1,5 +1,5 @@
+<!--suppress HtmlDeprecatedTag, XmlDeprecatedElement -->
 <center>
-
 An add-on module for <a href="https://modrinth.com/mod/switchy">Switchy</a> that provides some location-based utilities.<br/>
 Requires <a href="https://modrinth.com/mod/connector">Connector</a> and <a href="https://modrinth.com/mod/forgified-fabric-api">FFAPI</a> on forge.<br/>
 </center>
