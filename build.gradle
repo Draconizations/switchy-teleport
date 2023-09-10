@@ -88,6 +88,9 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${archivesBaseName}" }
 	}
+	from("src/main/resources/data/switchy_teleport/lang") {
+		into { "assets/switchy_teleport_data/lang" }
+	}
 }
 
 // Configure the maven publication
