@@ -1,0 +1,4 @@
+{
+  "switchy.modules.switchy_teleport.last_location.preview.tooltip": "Location: %s X:%s Y:%s Z:%s",
+  "switchy.modules.switchy_teleport.spawn_point.preview.tooltip": "Spawn: %s X:%s Y:%s Z:%s"
+}

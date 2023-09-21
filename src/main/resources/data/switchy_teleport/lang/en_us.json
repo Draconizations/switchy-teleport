@@ -1,4 +1,10 @@
 {
-  "commands.switchy_teleport.module.warn.location": "WARNING: All saved locations will be lost IMMEDIATELY. This is irreversible.",
-  "commands.switchy_teleport.module.warn.spawn_point": "WARNING: All saved spawn points will be lost IMMEDIATELY. This is irreversible."
+  "switchy.modules.switchy_teleport.last_location.description": "A module that switches the location of the player.",
+  "switchy.modules.switchy_teleport.last_location.enabled": "You will have a separate tracked location for each preset.",
+  "switchy.modules.switchy_teleport.last_location.disabled": "Your location wont be tracked per-preset; you will not be teleported when switching.",
+  "switchy.modules.switchy_teleport.last_location.warning": "All saved locations will be IMMEDIATELY lost. This is irreversible.",
+  "switchy.modules.switchy_teleport.spawn_point.description": "A module that switches the spawn point of the player.",
+  "switchy.modules.switchy_teleport.spawn_point.enabled": "You will have separate spawn points per-preset.",
+  "switchy.modules.switchy_teleport.spawn_point.disabled": "You will share a single spawn point across all presets.",
+  "switchy.modules.switchy_teleport.spawn_point.warning": "All other spawn points will be IMMEDIATELY lost. This is irreversible."
 }
