@@ -4,8 +4,8 @@ import folk.sisby.switchy.api.SwitchyEvents;
 import folk.sisby.switchy.api.module.*;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import folk.sisby.switchy.util.Feedback;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import xyz.fulmine.switchy_teleport.Location;
@@ -40,10 +40,10 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 		SwitchyModuleRegistry.registerModule(ID, SpawnModule::new, new SwitchyModuleInfo(
 				false,
 				SwitchyModuleEditable.OPERATOR,
-				Text.translatable("switchy.modules.switchy_teleport.spawn_point.description"))
-				.withDescriptionWhenEnabled(Text.translatable("switchy.modules.switchy_teleport.spawn_point.enabled"))
-				.withDescriptionWhenDisabled(Text.translatable("switchy.modules.switchy_teleport.spawn_point.disabled"))
-				.withDeletionWarning(Text.translatable("switchy.modules.switchy_teleport.spawn_point.warning"))
+				Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.description"))
+				.withDescriptionWhenEnabled(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.enabled"))
+				.withDescriptionWhenDisabled(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.disabled"))
+				.withDeletionWarning(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.warning"))
 		);
 	}
 }
