@@ -1,9 +1,9 @@
 [versions]
-mc = "1.19.2"
-qm = "1.19.2+build.22"
+mc = "1.18.2"
 ql = "0.19.0"
+qm = "1.18.2+build.26"
 
-switchy = "2.8.2+1.19"
+switchy = "2.8.3+1.18"
 
 [libraries]
 mc = { module = "com.mojang:minecraft", version.ref = "mc" }
