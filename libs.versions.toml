@@ -1,0 +1,18 @@
+[versions]
+mc = "1.19.3"
+ql = "0.19.0"
+qm = "1.19.3+build.28"
+
+switchy = "2.8.3+1.19.3"
+
+[libraries]
+mc = { module = "com.mojang:minecraft", version.ref = "mc" }
+qm = { module = "org.quiltmc:quilt-mappings", version.ref = "qm" }
+ql = { module = "org.quiltmc:quilt-loader", version.ref = "ql" }
+
+switchyCore = { module = "folk.sisby:switchy-core", version.ref = "switchy" }
+switchyClient = { module = "folk.sisby:switchy-client", version.ref = "switchy" }
+switchyUI = { module = "folk.sisby:switchy-ui", version.ref = "switchy" }
+
+[plugins]
+loom = { id = "org.quiltmc.loom", version = "1.3.+" }
