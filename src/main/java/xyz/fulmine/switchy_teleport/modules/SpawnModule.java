@@ -11,6 +11,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
 import xyz.fulmine.switchy_teleport.Location;
 
@@ -33,7 +34,7 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 	public void applyToPlayer(ServerPlayerEntity player) {
 		if (location != null) {
 			player.setSpawnPoint(RegistryKey.of(RegistryKeys.WORLD, location.dimension()),
-				new BlockPos(location.getRoundedCoordinates()),
+				BlockPos.ofFloored(new Vec3d(location.x(), location.y(), location.z())),
 				location.yaw(),
 				Boolean.TRUE.equals(location.setSpawn()), false);
 		}
