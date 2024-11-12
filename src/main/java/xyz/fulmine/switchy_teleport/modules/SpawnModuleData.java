@@ -1,6 +1,7 @@
 package xyz.fulmine.switchy_teleport.modules;
 
 import folk.sisby.switchy.api.SwitchySerializable;
+import folk.sisby.switchy.util.Feedback;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -8,7 +9,7 @@ import xyz.fulmine.switchy_teleport.Location;
 import xyz.fulmine.switchy_teleport.SwitchyTeleport;
 
 public class SpawnModuleData implements SwitchySerializable {
-	public final static Identifier ID = new Identifier(SwitchyTeleport.ID, "spawn_point");
+	public final static Identifier ID = Feedback.identifier(SwitchyTeleport.ID, "spawn_point");
 	public static final String KEY_LOCATION = "respawn_point";
 
 	public @Nullable Location location;

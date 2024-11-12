@@ -1,5 +1,6 @@
 package xyz.fulmine.switchy_teleport;
 
+import folk.sisby.switchy.util.Feedback;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
@@ -25,7 +26,7 @@ public record Location(double x, double y, double z, float pitch, float yaw, Ide
 			nbt.getDouble(KEY_Z),
 			nbt.getFloat(KEY_PITCH),
 			nbt.getFloat(KEY_YAW),
-			new Identifier(nbt.getString(KEY_DIMENSION)),
+			Feedback.identifier(nbt.getString(KEY_DIMENSION)),
 			nbt.contains(KEY_SET_SPAWN) ? nbt.getBoolean(KEY_SET_SPAWN) : null
 		);
 	}
