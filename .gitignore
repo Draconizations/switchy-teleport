@@ -5,7 +5,6 @@ out/
 classes/
 
 # Quilt Loom
-remappedSrc/
 run/
 
 # Eclipse
@@ -24,8 +23,8 @@ bin/
 .classpath
 .project
 
-# Eclipse JDT LS
-workspace/
-
 # macOS
 *.DS_Store
+
+# Changelog
+/CHANGELOG.md

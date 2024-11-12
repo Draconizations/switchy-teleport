@@ -20,7 +20,7 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 					respawnPoint.getX(), respawnPoint.getY(), respawnPoint.getZ(),
 					0, player.getSpawnAngle(),
 					player.getSpawnPointDimension().getValue(),
-					player.isSpawnPointSet()
+					player.isSpawnForced()
 			);
 		}
 	}
