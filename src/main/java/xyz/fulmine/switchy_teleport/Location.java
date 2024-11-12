@@ -15,10 +15,6 @@ public record Location(double x, double y, double z, float pitch, float yaw, Ide
 	public static final String KEY_DIMENSION = "dimension";
 	public static final String KEY_SET_SPAWN = "setSpawn";
 
-	public Location(Vec3d coordinates, float pitch, float yaw, Identifier dimension, @Nullable Boolean setSpawn) {
-		this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), pitch, yaw, dimension, setSpawn);
-	}
-
 	public static Location fromNbt(NbtCompound nbt) {
 		return new Location(
 			nbt.getDouble(KEY_X),
