@@ -1,7 +1,11 @@
 package xyz.fulmine.switchy_teleport.modules;
 
 import folk.sisby.switchy.api.SwitchyEvents;
-import folk.sisby.switchy.api.module.*;
+import folk.sisby.switchy.api.module.SwitchyModule;
+import folk.sisby.switchy.api.module.SwitchyModuleEditable;
+import folk.sisby.switchy.api.module.SwitchyModuleInfo;
+import folk.sisby.switchy.api.module.SwitchyModuleRegistry;
+import folk.sisby.switchy.api.module.SwitchyModuleTransferable;
 import folk.sisby.switchy.util.Feedback;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.Nullable;
@@ -12,10 +16,10 @@ public class LocationModule extends LocationModuleData implements SwitchyModule,
 	@Override
 	public void updateFromPlayer(ServerPlayerEntity player, @Nullable String nextPreset) {
 		location = new Location(
-				player.getX(), player.getY(), player.getZ(),
-				player.getPitch(), player.getYaw(),
-				player.getWorld().getRegistryKey().getValue(),
-				null
+			player.getX(), player.getY(), player.getZ(),
+			player.getPitch(), player.getYaw(),
+			player.getWorld().getRegistryKey().getValue(),
+			null
 		);
 	}
 
@@ -29,12 +33,12 @@ public class LocationModule extends LocationModuleData implements SwitchyModule,
 	@Override
 	public void onInitialize() {
 		SwitchyModuleRegistry.registerModule(ID, LocationModule::new, new SwitchyModuleInfo(
-				false,
-				SwitchyModuleEditable.OPERATOR,
-				Feedback.translatable("switchy.modules.switchy_teleport.last_location.description"))
-				.withDescriptionWhenEnabled(Feedback.translatable("switchy.modules.switchy_teleport.last_location.enabled"))
-				.withDescriptionWhenDisabled(Feedback.translatable("switchy.modules.switchy_teleport.last_location.disabled"))
-				.withDeletionWarning(Feedback.translatable("switchy.modules.switchy_teleport.last_location.warning"))
+			false,
+			SwitchyModuleEditable.OPERATOR,
+			Feedback.translatable("switchy.modules.switchy_teleport.last_location.description"))
+			.withDescriptionWhenEnabled(Feedback.translatable("switchy.modules.switchy_teleport.last_location.enabled"))
+			.withDescriptionWhenDisabled(Feedback.translatable("switchy.modules.switchy_teleport.last_location.disabled"))
+			.withDeletionWarning(Feedback.translatable("switchy.modules.switchy_teleport.last_location.warning"))
 		);
 	}
 }

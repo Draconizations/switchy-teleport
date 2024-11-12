@@ -1,38 +1,38 @@
 {
-  "schemaVersion": 1,
-  "id": "${modId}",
-  "version": "${version}",
-  "name": "${modName}",
-  "description": "${modDescription}",
-  "authors": [
-    "${authors}"
-  ],
-  "contributors": [
-    "${contributors}"
-  ],
-  "contact": {
-    "homepage": "${homepage}",
-    "issues": "${issues}",
-    "sources": "${sources}"
-  },
-  "license": "${license}",
-  "icon": "assets/${modId}/icon.png",
-  "depends": {
-    "minecraft": ">=${mc}",
-    "fabricloader": ">=${fl}",
-    "fabric-api": ">=${fapi}",
-    "switchy-core": ">=${switchy}",
-    "switchy-client": ">=${switchy}",
-    "switchy-ui": ">=${switchy}"
-  },
-  "entrypoints": {
-    "switchy": [
-      "xyz.fulmine.switchy_teleport.modules.LocationModule",
-      "xyz.fulmine.switchy_teleport.modules.SpawnModule"
-    ],
-    "switchy_client": [
-      "xyz.fulmine.switchy_teleport.modules.client.LocationClientModule",
-      "xyz.fulmine.switchy_teleport.modules.client.SpawnClientModule"
-    ]
-  }
+	"schemaVersion": 1,
+	"id": "${modId}",
+	"version": "${version}",
+	"name": "${modName}",
+	"description": "${modDescription}",
+	"authors": [
+		"${authors}"
+	],
+	"contributors": [
+		"${contributors}"
+	],
+	"contact": {
+		"homepage": "${homepage}",
+		"issues": "${issues}",
+		"sources": "${sources}"
+	},
+	"license": "${license}",
+	"icon": "assets/${modId}/icon.png",
+	"depends": {
+		"minecraft": ">=${mc}",
+		"fabricloader": ">=${fl}",
+		"fabric-api": ">=${fapi}",
+		"switchy-core": ">=${switchy}",
+		"switchy-client": ">=${switchy}",
+		"switchy-ui": ">=${switchy}"
+	},
+	"entrypoints": {
+		"switchy": [
+			"xyz.fulmine.switchy_teleport.modules.LocationModule",
+			"xyz.fulmine.switchy_teleport.modules.SpawnModule"
+		],
+		"switchy_client": [
+			"xyz.fulmine.switchy_teleport.modules.client.LocationClientModule",
+			"xyz.fulmine.switchy_teleport.modules.client.SpawnClientModule"
+		]
+	}
 }

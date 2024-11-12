@@ -8,9 +8,9 @@ import xyz.fulmine.switchy_teleport.Location;
 public class TeleportUtils {
 	public static void teleportPlayer(ServerPlayerEntity player, Location location) {
 		player.teleport(
-				player.getWorld().getServer().getWorld(RegistryKey.of(Registry.WORLD_KEY, location.dimension())),
-				location.x(), location.y(), location.z(),
-				location.yaw(), location.pitch()
+			player.getWorld().getServer().getWorld(RegistryKey.of(Registry.WORLD_KEY, location.dimension())),
+			location.x(), location.y(), location.z(),
+			location.yaw(), location.pitch()
 		);
 	}
 }
