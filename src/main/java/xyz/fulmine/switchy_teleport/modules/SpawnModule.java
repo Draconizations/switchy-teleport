@@ -9,6 +9,7 @@ import folk.sisby.switchy.api.module.SwitchyModuleTransferable;
 import folk.sisby.switchy.util.Feedback;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +34,7 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 	public void applyToPlayer(ServerPlayerEntity player) {
 		if (location != null) {
 			player.setSpawnPoint(RegistryKey.of(Registry.WORLD_KEY, location.dimension()),
-				new BlockPos(location.getCoordinates()),
+				new BlockPos(new Vec3d(location.x(), location.y(), location.z())),
 				location.yaw(),
 				Boolean.TRUE.equals(location.setSpawn()), false);
 		}
