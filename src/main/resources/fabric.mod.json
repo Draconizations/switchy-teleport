@@ -23,7 +23,6 @@
     "fabric-api": ">=${fapi}",
     "switchy-core": ">=${switchy}",
     "switchy-client": ">=${switchy}",
-    "switchy-cardinal": ">=${switchy}",
     "switchy-ui": ">=${switchy}"
   },
   "entrypoints": {
