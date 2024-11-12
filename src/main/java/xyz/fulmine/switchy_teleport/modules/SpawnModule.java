@@ -1,7 +1,11 @@
 package xyz.fulmine.switchy_teleport.modules;
 
 import folk.sisby.switchy.api.SwitchyEvents;
-import folk.sisby.switchy.api.module.*;
+import folk.sisby.switchy.api.module.SwitchyModule;
+import folk.sisby.switchy.api.module.SwitchyModuleEditable;
+import folk.sisby.switchy.api.module.SwitchyModuleInfo;
+import folk.sisby.switchy.api.module.SwitchyModuleRegistry;
+import folk.sisby.switchy.api.module.SwitchyModuleTransferable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import folk.sisby.switchy.util.Feedback;
@@ -17,10 +21,10 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 
 		if (respawnPoint != null) {
 			location = new Location(
-					respawnPoint.getX(), respawnPoint.getY(), respawnPoint.getZ(),
-					0, player.getSpawnAngle(),
-					player.getSpawnPointDimension().getValue(),
-					player.isSpawnForced()
+				respawnPoint.getX(), respawnPoint.getY(), respawnPoint.getZ(),
+				0, player.getSpawnAngle(),
+				player.getSpawnPointDimension().getValue(),
+				player.isSpawnForced()
 			);
 		}
 	}
@@ -29,21 +33,21 @@ public class SpawnModule extends SpawnModuleData implements SwitchyModule, Switc
 	public void applyToPlayer(ServerPlayerEntity player) {
 		if (location != null) {
 			player.setSpawnPoint(RegistryKey.of(RegistryKeys.WORLD, location.dimension()),
-					new BlockPos(location.getRoundedCoordinates()),
-					location.yaw(),
-					Boolean.TRUE.equals(location.setSpawn()), false);
+				new BlockPos(location.getRoundedCoordinates()),
+				location.yaw(),
+				Boolean.TRUE.equals(location.setSpawn()), false);
 		}
 	}
 
 	@Override
 	public void onInitialize() {
 		SwitchyModuleRegistry.registerModule(ID, SpawnModule::new, new SwitchyModuleInfo(
-				false,
-				SwitchyModuleEditable.OPERATOR,
-				Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.description"))
-				.withDescriptionWhenEnabled(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.enabled"))
-				.withDescriptionWhenDisabled(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.disabled"))
-				.withDeletionWarning(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.warning"))
+			false,
+			SwitchyModuleEditable.OPERATOR,
+			Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.description"))
+			.withDescriptionWhenEnabled(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.enabled"))
+			.withDescriptionWhenDisabled(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.disabled"))
+			.withDeletionWarning(Feedback.translatable("switchy.modules.switchy_teleport.spawn_point.warning"))
 		);
 	}
 }

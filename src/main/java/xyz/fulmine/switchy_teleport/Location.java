@@ -19,6 +19,18 @@ public record Location(double x, double y, double z, float pitch, float yaw, Ide
 		this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), pitch, yaw, dimension, setSpawn);
 	}
 
+	public static Location fromNbt(NbtCompound nbt) {
+		return new Location(
+			nbt.getDouble(KEY_X),
+			nbt.getDouble(KEY_Y),
+			nbt.getDouble(KEY_Z),
+			nbt.getFloat(KEY_PITCH),
+			nbt.getFloat(KEY_YAW),
+			new Identifier(nbt.getString(KEY_DIMENSION)),
+			nbt.contains(KEY_SET_SPAWN) ? nbt.getBoolean(KEY_SET_SPAWN) : null
+		);
+	}
+
 	public Vec3d getCoordinates() {
 		return new Vec3d(x, y, z);
 	}
@@ -42,17 +54,5 @@ public record Location(double x, double y, double z, float pitch, float yaw, Ide
 		if (setSpawn != null) outNbt.putBoolean(KEY_SET_SPAWN, setSpawn);
 
 		return outNbt;
-	}
-
-	public static Location fromNbt(NbtCompound nbt) {
-		return new Location(
-				nbt.getDouble(KEY_X),
-				nbt.getDouble(KEY_Y),
-				nbt.getDouble(KEY_Z),
-				nbt.getFloat(KEY_PITCH),
-				nbt.getFloat(KEY_YAW),
-				new Identifier(nbt.getString(KEY_DIMENSION)),
-				nbt.contains(KEY_SET_SPAWN) ? nbt.getBoolean(KEY_SET_SPAWN) : null
-		);
 	}
 }
